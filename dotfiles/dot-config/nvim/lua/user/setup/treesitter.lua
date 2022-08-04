@@ -1,6 +1,5 @@
-if vim.fn.has('nvim-0.5.0') ~= 1 then
-  vim.api.nvim_err_writeln("The plugin `treesitter` requires Neovim 0.5.0.")
-  vim.api.nvim_err_writeln("Please update your Neovim.")
+if vim.fn.has('nvim-0.7.0') ~= 1 then
+  vim.api.nvim_err_writeln("The plugin `treesitter` requires Neovim 0.7.0.")
   return
 end
 

@@ -1,6 +1,5 @@
 if vim.fn.has('nvim-0.5.0') ~= 1 then
   vim.api.nvim_err_writeln("The plugin `gitsigns` requires Neovim 0.5.0.")
-  vim.api.nvim_err_writeln("Please update your Neovim.")
   return
 end
 
