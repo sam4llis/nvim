@@ -11,11 +11,11 @@ require('gitsigns').setup {
     topdelete    = {hl = 'GitSignsDelete', text = '‾', numhl='GitSignsDeleteNr', linehl='GitSignsDeleteLn'},
     changedelete = {hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
   },
-  signcolumn = false,   -- :Gitsigns toggle_signs
-  numhl      = true,    -- :Gitsigns toggle_numhl
-  linehl     = true,    -- :Gitsigns toggle_linehl
-  show_deleted = false, -- :Gitsigns toggle_deleted
-  word_diff  = false,   -- :Gitsigns toggle_word_diff
+  signcolumn = true,    -- toggle_signs
+  numhl      = false,   -- toggle_numhl
+  linehl     = false,   -- toggle_linehl
+  show_deleted = false, -- toggle_deleted
+  word_diff  = false,   -- toggle_word_diff
   watch_gitdir = {
     interval = 1000,
     follow_files = true
@@ -24,7 +24,7 @@ require('gitsigns').setup {
   current_line_blame = false,
   current_line_blame_opts = {
     virt_text = true,
-    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    virt_text_pos = 'eol',
     delay = 200,
     ignore_whitespace = false,
   },
@@ -33,7 +33,7 @@ require('gitsigns').setup {
   },
   sign_priority = 6,
   update_debounce = 100,
-  status_formatter = nil, -- Use default
+  status_formatter = nil,
   max_file_length = 40000,
   preview_config = {
     border = 'single',
@@ -52,11 +52,11 @@ require('gitsigns').setup {
       vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts)
     end
 
-    -- Navigation
+    -- Navigation.
     map('n', ']c', "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", {expr=true})
     map('n', '[c', "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", {expr=true})
 
-    -- Text object
+    -- Text Object.
     map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
     map('x', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
   end
