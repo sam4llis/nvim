@@ -48,4 +48,4 @@ else
   vim.api.nvim_err_writeln('Global statusline requires Neovim 0.7.0')
 end
 
-vim.api.nvim_set_var('netrw_list_hide', '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+') -- Hide dotfiles in netrw by default.
+vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+' -- Hide dotfiles in netrw by default.
