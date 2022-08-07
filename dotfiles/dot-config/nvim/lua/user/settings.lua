@@ -6,7 +6,7 @@
 --                            |___/
 
 local settings = {
-  cursorcolumn = true,                       -- Highlight the active cursor column.
+  cursorcolumn = false,                      -- Highlight the active cursor column.
   cursorline = true,                         -- Highlight the active cursor line.
   completeopt = 'menuone,noinsert,noselect', -- Saner completion experience.
   foldcolumn = 'auto',                       -- Resize to the minimum amount of folds to display.
