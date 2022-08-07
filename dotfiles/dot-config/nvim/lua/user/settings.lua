@@ -15,6 +15,7 @@ local settings = {
   ignorecase = true,                         -- Case-insensitive search.
   lazyredraw = true,                         -- Do not redraw screen while executing macros, etc.
   list = true,                               -- Enable list mode.
+  listchars = 'tab:>-,trail:x,extends:>,precedes:<,nbsp:+,leadmultispace:.',
   mouse = 'a',                               -- Enable mouse in most contexts.
   number = true,                             -- Line numbering.
   path = '**',                               -- Recursively find files.
