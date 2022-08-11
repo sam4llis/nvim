@@ -17,9 +17,6 @@ vim.api.nvim_set_keymap('o', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = t
 vim.api.nvim_set_keymap('x', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, expr = true })
 vim.api.nvim_set_keymap('x', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
 
--- Trim whitespace.
-vim.api.nvim_create_user_command("TrimWhitespace", ":lua require('user.utils.whitespace').trim()<CR>", {})
-
 -- Sort lines.
 vim.api.nvim_set_keymap('v', '<leader>s', ':sort<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<leader>S', ':sort!<CR>', { noremap = true, silent = true })
