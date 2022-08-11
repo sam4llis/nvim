@@ -37,19 +37,28 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug('tpope/vim-vinegar')
 
   -- Treesitter.
-  Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-  Plug('nvim-treesitter/nvim-treesitter-textobjects')
-  Plug('nvim-treesitter/playground')
+  if vim.fn.has('nvim-0.7.0') == 1 then
+    Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+    Plug('nvim-treesitter/nvim-treesitter-context')
+    Plug('nvim-treesitter/nvim-treesitter-textobjects')
+    Plug('nvim-treesitter/playground')
+  end
 
   -- Telescope.
-  Plug('nvim-lua/plenary.nvim')
-  Plug('nvim-telescope/telescope.nvim')
-  Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
+  if vim.fn.has('nvim-0.7.0') == 1 then
+    Plug('nvim-lua/plenary.nvim')
+    Plug('nvim-telescope/telescope.nvim')
+    Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
+  end
+
+  -- LSP.
+  if vim.fn.has('nvim-0.7.2') == 1 then
+    Plug('neovim/nvim-lspconfig')
+    Plug('jose-elias-alvarez/null-ls.nvim')
+  end
 
   -- Miscellaneous.
   Plug('lewis6991/gitsigns.nvim')
-  Plug('neovim/nvim-lspconfig')
-  Plug('jose-elias-alvarez/null-ls.nvim')
 
   -- My Plugins.
   if vim.fn.has('nvim-0.7.0') == 1 then
