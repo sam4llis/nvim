@@ -61,6 +61,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
   -- Miscellaneous.
   Plug('lewis6991/gitsigns.nvim')
+  Plug('kyazdani42/nvim-web-devicons')
 
   -- My Plugins.
   if vim.fn.has('nvim-0.7.0') == 1 then
