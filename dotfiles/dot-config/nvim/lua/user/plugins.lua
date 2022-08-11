@@ -51,9 +51,10 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   Plug('jose-elias-alvarez/null-ls.nvim')
 
   -- My Plugins.
-  Plug('~/Documents/nvim-plugins/nvim-buoy')
-  Plug('~/Documents/nvim-plugins/nvim-stratus')
-  Plug('~/Documents/nvim-plugins/nvim-tundra')
-  Plug('~/Documents/nvim-plugins/nvim-lua-gf')
+  if vim.fn.has('nvim-0.7.0') == 1 then
+    Plug('sam4llis/nvim-tundra')
+    Plug('sam4llis/nvim-lua-gf')
+    Plug('sam4llis/telescope-arglist.nvim')
+  end
 
 vim.call('plug#end')
