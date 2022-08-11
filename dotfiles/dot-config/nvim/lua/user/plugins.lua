@@ -22,6 +22,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   -- Vim.
   Plug('joechrisellis/vim-git-arglist')
   Plug('joechrisellis/vim-searchlist')
+  Plug('joechrisellis/gruvbox')
   Plug('tpope/vim-commentary')
   Plug('tpope/vim-dadbod')
   Plug('tpope/vim-fugitive')
