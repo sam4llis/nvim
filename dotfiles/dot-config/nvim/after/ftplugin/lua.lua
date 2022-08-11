@@ -8,6 +8,3 @@ pprint = function(t)
   print(vim.inspect(t))
   return t
 end
-
--- Open files in `require()` via `gf`.
-require('nvim-lua-gf').setup()
