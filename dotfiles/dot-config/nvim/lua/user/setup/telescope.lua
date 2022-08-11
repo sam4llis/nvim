@@ -4,6 +4,7 @@ if vim.fn.has('nvim-0.7.0') ~= 1 then
 end
 
 local actions = require('telescope.actions')
+local actions_state = require('telescope.actions.state')
 
 require('telescope').setup{
   defaults = {
@@ -13,6 +14,10 @@ require('telescope').setup{
         ['<C-q>'] = function(prompt_bufnr)
           actions.smart_send_to_qflist(prompt_bufnr)
           vim.cmd [[ cwindow ]]
+        end,
+        ['<C-a>'] = function(prompt_bufnr)
+          local entry = actions_state.get_selected_entry()
+          vim.cmd('argadd ' .. entry.path)
         end,
       },
     },
