@@ -28,6 +28,9 @@ vim.api.nvim_set_keymap('v', '<leader>c', ':%!column -t<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fr', ':Telescope resume<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fa', ':Telescope arglist<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fs', ':Telescope spell_suggest<CR>', { noremap = true, silent = true })
 
 -- nvim-buoy: Floating terminal mappings.
 -- FIXME: Change to nvim-buoy.
