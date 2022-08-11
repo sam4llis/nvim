@@ -31,14 +31,3 @@ vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', { noremap =
 vim.api.nvim_set_keymap('n', '<leader>fr', ':Telescope resume<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fa', ':Telescope arglist<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fs', ':Telescope spell_suggest<CR>', { noremap = true, silent = true })
-
--- nvim-buoy: Floating terminal mappings.
--- FIXME: Change to nvim-buoy.
-vim.api.nvim_create_user_command('ToggleFloatingTerminal', ':lua require("terminal"):toggle()<CR>', {})
-
--- nvim-buoy: Floating note mappings.
-vim.api.nvim_set_keymap('n', '<leader>n', ':lua require("note"):toggle(true)<CR>', { noremap = true, silent = true })
-
--- Gitsigns mappings.
-vim.api.nvim_create_user_command("Stage", "'<,'>Gitsigns stage_hunk", { range = true })
-vim.api.nvim_create_user_command("ToggleDeleted", ":Gitsigns toggle_deleted", {})
