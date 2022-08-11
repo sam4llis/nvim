@@ -25,10 +25,9 @@ vim.api.nvim_set_keymap('v', '<leader>S', ':sort!<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('v', '<leader>c', ':%!column -t<CR>', { noremap = true, silent = true })
 
 -- Telescope mappings.
-vim.api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':lua require("telescope.builtin").live_grep()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fn', ':lua require("telescope.builtin").find_files({ prompt_title = "Find Notes", cwd = "~/notes/" })<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
 
 -- nvim-buoy: Floating terminal mappings.
 -- FIXME: Change to nvim-buoy.
