@@ -20,9 +20,9 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.config/nvim/plugged')
 
   -- Vim.
+  Plug('joechrisellis/gruvbox')
   Plug('joechrisellis/vim-git-arglist')
   Plug('joechrisellis/vim-searchlist')
-  Plug('joechrisellis/gruvbox')
   Plug('tpope/vim-abolish')
   Plug('tpope/vim-commentary')
   Plug('tpope/vim-dadbod')
@@ -60,8 +60,9 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   end
 
   -- Miscellaneous.
-  Plug('lewis6991/gitsigns.nvim')
   Plug('kyazdani42/nvim-web-devicons')
+  Plug('lewis6991/gitsigns.nvim')
+  Plug('lewis6991/spellsitter.nvim')
 
   -- My Plugins.
   if vim.fn.has('nvim-0.7.0') == 1 then
