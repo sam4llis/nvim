@@ -10,6 +10,10 @@ require('telescope').setup{
     mappings = {
       i = {
         ['<esc>'] = actions.close,
+        ['<C-q>'] = function(prompt_bufnr)
+          actions.smart_send_to_qflist(prompt_bufnr)
+          vim.cmd [[ cwindow ]]
+        end,
       },
     },
     prompt_prefix = '     ',
