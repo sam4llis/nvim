@@ -6,13 +6,4 @@ if not installed then
   return
 end
 
-vim.opt.spell = true
 require('spellsitter').setup()
-
--- -- Selectively disable spellchecking for certain file types.
--- local group = vim.api.nvim_create_augroup('spellsitter', { clear = true })
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = { 'python', 'lua' },
---   command = 'setlocal nospell',
---   group = group,
--- })
