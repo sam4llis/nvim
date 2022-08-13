@@ -10,24 +10,24 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Normalise search direction behaviour.
-vim.api.nvim_set_keymap('n', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap('n', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap('o', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap('o', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap('x', 'n', "(v:searchforward ? 'n' : 'N')", { noremap = true, expr = true })
-vim.api.nvim_set_keymap('x', 'N', "(v:searchforward ? 'N' : 'n')", { noremap = true, expr = true })
+vim.keymap.set('n', 'n', "(v:searchforward ? 'n' : 'N')", {expr = true})
+vim.keymap.set('n', 'N', "(v:searchforward ? 'N' : 'n')", {expr = true})
+vim.keymap.set('o', 'n', "(v:searchforward ? 'n' : 'N')", {expr = true})
+vim.keymap.set('o', 'N', "(v:searchforward ? 'N' : 'n')", {expr = true})
+vim.keymap.set('x', 'n', "(v:searchforward ? 'n' : 'N')", {expr = true})
+vim.keymap.set('x', 'N', "(v:searchforward ? 'N' : 'n')", {expr = true})
 
 -- Sort lines.
-vim.api.nvim_set_keymap('v', '<leader>s', ':sort<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<leader>S', ':sort!<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>s', ':sort<CR>',  {silent = true})
+vim.keymap.set('v', '<leader>S', ':sort!<CR>', {silent = true})
 
 -- Align and prettify table entries and columns.
-vim.api.nvim_set_keymap('v', '<leader>c', ':%!column -t<CR>', { noremap = true, silent = true })
+vim.keymap.set('v', '<leader>c', ':%!column -t<CR>', {silent = true})
 
 -- Telescope mappings.
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fr', ':Telescope resume<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fa', ':Telescope arglist<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fs', ':Telescope spell_suggest<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>',    {silent = true})
+vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>',     {silent = true})
+vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>',       {silent = true})
+vim.keymap.set('n', '<leader>fr', ':Telescope resume<CR>',        {silent = true})
+vim.keymap.set('n', '<leader>fa', ':Telescope arglist<CR>',       {silent = true})
+vim.keymap.set('n', '<leader>fs', ':Telescope spell_suggest<CR>', {silent = true})
