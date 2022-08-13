@@ -8,6 +8,7 @@ local helpers = require('null-ls.helpers')
 
 local sources = {
   null_ls.builtins.formatting.blue,
+  null_ls.builtins.diagnostics.vale,
 }
 
 null_ls.setup({
