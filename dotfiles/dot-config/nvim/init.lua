@@ -13,6 +13,7 @@ require('user.keys')
 require('user.utils.finder')
 require('user.utils.vimrc')
 require('user.utils.whitespace')
+require('user.utils.autocmds')
 
 -- Setup plugins.
 require('user.setup.treesitter')
