@@ -66,8 +66,9 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
 
   -- My Plugins.
   if vim.fn.has('nvim-0.7.0') == 1 then
-    Plug('sam4llis/nvim-tundra')
+    Plug('sam4llis/nvim-cobalt')
     Plug('sam4llis/nvim-lua-gf')
+    Plug('sam4llis/nvim-tundra')
     Plug('sam4llis/telescope-arglist.nvim')
   end
 
