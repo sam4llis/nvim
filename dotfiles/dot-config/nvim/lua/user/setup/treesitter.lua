@@ -1,9 +1,9 @@
 if vim.fn.has('nvim-0.7.0') ~= 1 then
-  vim.api.nvim_err_writeln("The plugin `treesitter` requires Neovim 0.7.0.")
+  vim.api.nvim_err_writeln('The plugin `treesitter` requires Neovim 0.7.0.')
   return
 end
 
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   ensure_installed = { },
   highlight = {
     enable = true,
@@ -21,43 +21,43 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       lookahead = true,
       keymaps = {
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
       },
     },
     swap = {
       enable = true,
       swap_next = {
-        ["]vv"] = "@parameter.inner",
-        ["]vf"] = "@funtion.outer",
-        ["]vc"] = "@class.outer",
+        [']vv'] = '@parameter.inner',
+        [']vf'] = '@funtion.outer',
+        [']vc'] = '@class.outer',
       },
       swap_previous = {
-        ["[vv"] = "@parameter.inner",
-        ["[vf"] = "@function.outer",
-        ["[vc"] = "@class.outer",
+        ['[vv'] = '@parameter.inner',
+        ['[vf'] = '@function.outer',
+        ['[vc'] = '@class.outer',
       },
     },
     move = {
       enable = true,
       set_jumps = true, -- Whether to set jumps in the jumplist.
       goto_next_start = {
-        ["]m"] = "@function.outer",
-        ["]]"] = "@class.outer",
+        [']m'] = '@function.outer',
+        [']]'] = '@class.outer',
       },
       goto_next_end = {
-        ["]M"] = "@function.outer",
-        ["]["] = "@class.outer",
+        [']M'] = '@function.outer',
+        [']['] = '@class.outer',
       },
       goto_previous_start = {
-        ["[m"] = "@function.outer",
-        ["[["] = "@class.outer",
+        ['[m'] = '@function.outer',
+        ['[['] = '@class.outer',
       },
       goto_previous_end = {
-        ["[M"] = "@function.outer",
-        ["[]"] = "@class.outer",
+        ['[M'] = '@function.outer',
+        ['[]'] = '@class.outer',
       },
     },
   },
