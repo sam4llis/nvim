@@ -4,6 +4,7 @@ if vim.fn.has('nvim-0.7.0') ~= 1 then
 end
 
 local lspconfig = require('lspconfig')
+local setup = {}
 
 local has_null_ls, null_ls = pcall(require, 'null-ls')
 if has_null_ls then
@@ -18,7 +19,7 @@ if has_null_ls then
   }
 end
 
-local setup_keymaps = function(client, bufnr)
+setup.keymaps = function(client, bufnr)
   local opts_with_desc = function(desc)
     return {
       noremap = true,
@@ -43,7 +44,7 @@ local setup_keymaps = function(client, bufnr)
   vim.keymap.set('i', '<C-q>', vim.lsp.buf.signature_help,  opts_with_desc('vim.lsp.buf.signature_help'))
 end
 
-local setup_document_highlights = function(client, bufnr)
+setup.document_highlights = function(client, bufnr)
   if not client.server_capabilities.documentHighlightProvider then
     return
   end
@@ -75,7 +76,7 @@ local setup_document_highlights = function(client, bufnr)
   )
 end
 
-local setup_codelens = function(client, bufnr)
+setup.codelens = function(client, bufnr)
   if not client.server_capabilities.codeLensProvider then
     return
   end
@@ -102,7 +103,7 @@ local setup_codelens = function(client, bufnr)
   )
 end
 
-local setup_format_on_save = function(client, bufnr)
+setup.format_on_save = function(client, bufnr)
   if not client.server_capabilities.documentFormattingProvider then
     return
   end
@@ -128,19 +129,15 @@ end
 
 local custom_lsp_attach = function(setup_callbacks)
   return function(client, bufnr)
-    for _, setup_function in ipairs(setup_callbacks) do
+    for _, setup_function in pairs(setup_callbacks) do
       setup_function(client, bufnr)
     end
   end
 end
 
 local base_server_settings = {
-  on_attach = custom_lsp_attach({ -- by default, set up everything!
-    setup_keymaps,
-    setup_document_highlights,
-    setup_codelens,
-    setup_format_on_save,
-  })
+  -- By default, set up everything.
+  on_attach = custom_lsp_attach(setup)
 }
 
 local configs = {
