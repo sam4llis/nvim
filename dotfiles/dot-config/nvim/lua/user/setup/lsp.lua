@@ -10,7 +10,7 @@ local has_null_ls, null_ls = pcall(require, 'null-ls')
 if has_null_ls then
   lspconfig['null_ls'] = null_ls
 
-  null_ls_config = {
+  NULL_LS_CONFIG = {
     sources = {
       null_ls.builtins.formatting.blue,
       null_ls.builtins.formatting.prettier,
@@ -29,19 +29,19 @@ setup.keymaps = function(client, bufnr)
     }
   end
 
-  vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition,      opts_with_desc('vim.lsp.buf.definition'))
-  vim.keymap.set('n', 'K',     vim.lsp.buf.hover,           opts_with_desc('vim.lsp.buf.hover'))
-  vim.keymap.set('n', 'yca',   vim.lsp.buf.code_action,     opts_with_desc('vim.lsp.buf.code_action'))
-  vim.keymap.set('n', 'ycd',   vim.lsp.buf.definition,      opts_with_desc('vim.lsp.buf.definition'))
-  vim.keymap.set('n', 'yci',   vim.lsp.buf.incoming_calls,  opts_with_desc('vim.lsp.buf.incoming_calls'))
-  vim.keymap.set('n', 'ycm',   vim.lsp.buf.implementation,  opts_with_desc('vim.lsp.buf.implementation'))
-  vim.keymap.set('n', 'ycn',   vim.lsp.buf.rename,          opts_with_desc('vim.lsp.buf.rename'))
-  vim.keymap.set('n', 'yco',   vim.lsp.buf.outgoing_calls,  opts_with_desc('vim.lsp.buf.outgoing_calls'))
-  vim.keymap.set('n', 'ycr',   vim.lsp.buf.references,      opts_with_desc('vim.lsp.buf.references'))
-  vim.keymap.set('n', 'ycs',   vim.lsp.buf.signature_help,  opts_with_desc('vim.lsp.buf.signature_help'))
-  vim.keymap.set('n', 'yct',   vim.lsp.buf.type_definition, opts_with_desc('vim.lsp.buf.type_definition'))
-  vim.keymap.set('n', 'ycl',   vim.lsp.codelens.run,        opts_with_desc('vim.lsp.codelens.run'))
-  vim.keymap.set('i', '<C-q>', vim.lsp.buf.signature_help,  opts_with_desc('vim.lsp.buf.signature_help'))
+  vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition, opts_with_desc('vim.lsp.buf.definition'))
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts_with_desc('vim.lsp.buf.hover'))
+  vim.keymap.set('n', 'yca', vim.lsp.buf.code_action, opts_with_desc('vim.lsp.buf.code_action'))
+  vim.keymap.set('n', 'ycd', vim.lsp.buf.definition, opts_with_desc('vim.lsp.buf.definition'))
+  vim.keymap.set('n', 'yci', vim.lsp.buf.incoming_calls, opts_with_desc('vim.lsp.buf.incoming_calls'))
+  vim.keymap.set('n', 'ycm', vim.lsp.buf.implementation, opts_with_desc('vim.lsp.buf.implementation'))
+  vim.keymap.set('n', 'ycn', vim.lsp.buf.rename, opts_with_desc('vim.lsp.buf.rename'))
+  vim.keymap.set('n', 'yco', vim.lsp.buf.outgoing_calls, opts_with_desc('vim.lsp.buf.outgoing_calls'))
+  vim.keymap.set('n', 'ycr', vim.lsp.buf.references, opts_with_desc('vim.lsp.buf.references'))
+  vim.keymap.set('n', 'ycs', vim.lsp.buf.signature_help, opts_with_desc('vim.lsp.buf.signature_help'))
+  vim.keymap.set('n', 'yct', vim.lsp.buf.type_definition, opts_with_desc('vim.lsp.buf.type_definition'))
+  vim.keymap.set('n', 'ycl', vim.lsp.codelens.run, opts_with_desc('vim.lsp.codelens.run'))
+  vim.keymap.set('i', '<C-q>', vim.lsp.buf.signature_help, opts_with_desc('vim.lsp.buf.signature_help'))
 end
 
 setup.document_highlights = function(client, bufnr)
@@ -53,26 +53,26 @@ setup.document_highlights = function(client, bufnr)
   vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
   vim.api.nvim_create_autocmd(
-  { 'CursorHold' },
-  {
-    group = augroup_id,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.clear_references()
-      vim.lsp.buf.document_highlight()
-    end
-  }
+    { 'CursorHold' },
+    {
+      group = augroup_id,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.clear_references()
+        vim.lsp.buf.document_highlight()
+      end
+    }
   )
 
   vim.api.nvim_create_autocmd(
-  { 'InsertEnter' },
-  {
-    group = augroup_id,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.clear_references()
-    end
-  }
+    { 'InsertEnter' },
+    {
+      group = augroup_id,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end
+    }
   )
 end
 
@@ -85,21 +85,21 @@ setup.codelens = function(client, bufnr)
   vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
   vim.api.nvim_create_autocmd(
-  { 'BufEnter' },
-  {
-    group = augroup_id,
-    buffer = bufnr,
-    once = true,
-    callback = vim.lsp.codelens.refresh,
-  }
+    { 'BufEnter' },
+    {
+      group = augroup_id,
+      buffer = bufnr,
+      once = true,
+      callback = vim.lsp.codelens.refresh,
+    }
   )
   vim.api.nvim_create_autocmd(
-  { 'BufWritePost', 'CursorHold', 'InsertLeave' },
-  {
-    group = augroup_id,
-    buffer = bufnr,
-    callback = vim.lsp.codelens.refresh,
-  }
+    { 'BufWritePost', 'CursorHold', 'InsertLeave' },
+    {
+      group = augroup_id,
+      buffer = bufnr,
+      callback = vim.lsp.codelens.refresh,
+    }
   )
 end
 
@@ -114,16 +114,16 @@ setup.format_on_save = function(client, bufnr)
   vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
   vim.api.nvim_create_autocmd(
-  { 'BufWritePre' },
-  {
-    group = augroup_id,
-    buffer = bufnr,
-    callback = function()
-      vim.lsp.buf.format{
-        bufnr = bufnr,
-      }
-    end,
-  }
+    { 'BufWritePre' },
+    {
+      group = augroup_id,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({
+          bufnr = bufnr,
+        })
+      end,
+    }
   )
 end
 
