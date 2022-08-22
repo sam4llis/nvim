@@ -141,9 +141,20 @@ local base_server_settings = {
 }
 
 local configs = {
-  -- TODO: Populate servers.
-  pyright = {},
-  null_ls = null_ls_config,
+  --
+  -- TODO: Populate servers. To populate servers with base server settings:
+  --   server_name = {},
+  -- Or, to populate using a custom LSP attach:
+  --   server_name = {
+  --     on_attach = custom_lsp_attach({
+  --       setup.keymaps,
+  --       setup.document_highlights,
+  --       setup.codelens,
+  --     })
+  --   },
+  -- Finally, to call null-ls servers:
+  --   null_ls = null_ls_config,
+  --
 }
 
 for server, server_specific_settings in pairs(configs) do
