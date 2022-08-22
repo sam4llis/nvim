@@ -136,8 +136,7 @@ local custom_lsp_attach = function(setup_callbacks)
 end
 
 local base_server_settings = {
-  -- By default, set up everything.
-  on_attach = custom_lsp_attach(setup)
+  on_attach = custom_lsp_attach(setup) -- By default, set up everything.
 }
 
 local configs = {
