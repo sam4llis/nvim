@@ -43,7 +43,7 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
   if vim.fn.has('nvim-0.7.0') == 1 then
     Plug('nvim-lua/plenary.nvim')
     Plug('nvim-telescope/telescope.nvim')
-    Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
+    -- Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
   end
 
   -- LSP.
