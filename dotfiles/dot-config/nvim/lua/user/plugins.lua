@@ -7,13 +7,6 @@
 
 if vim.fn.empty(vim.fn.glob('~/.config/nvim/autoload/plug.vim')) == 1 then
   vim.cmd('!' .. "sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
-  if vim.fn.has('nvim-0.7.0') == 1 then
-    vim.api.nvim_create_autocmd('VimEnter', { command = 'PlugInstall --sync | source $MYVIMRC' })
-  else
-    vim.api.nvim_err_writeln('Lua autocmds require Neovim 0.7.0.')
-    vim.api.nvim_err_writeln('Please update your Neovim.')
-    return
-  end
 end
 
 local Plug = vim.fn['plug#']
