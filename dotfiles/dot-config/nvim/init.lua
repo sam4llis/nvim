@@ -18,7 +18,6 @@ require('user.utils.autocmds')
 -- Setup plugins.
 require('user.setup.treesitter')
 require('user.setup.lsp')
-require('user.setup.null-ls')
 require('user.setup.diagnostics')
 require('user.setup.telescope')
 require('user.setup.gitsigns')

@@ -4,11 +4,10 @@ if vim.fn.has('nvim-0.7.0') ~= 1 then
 end
 
 local lspconfig = require('lspconfig')
+local null_ls = require('null-ls')
+lspconfig['null_ls'] = null_ls
 
-base_custom_lsp_attach = function(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-  vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
-
+local setup_keymaps = function(client, bufnr)
   local opts_with_desc = function(desc)
     return {
       noremap = true,
@@ -31,115 +30,123 @@ base_custom_lsp_attach = function(client, bufnr)
   vim.keymap.set('n', 'yct',   vim.lsp.buf.type_definition, opts_with_desc('vim.lsp.buf.type_definition'))
   vim.keymap.set('n', 'ycl',   vim.lsp.codelens.run,        opts_with_desc('vim.lsp.codelens.run'))
   vim.keymap.set('i', '<C-q>', vim.lsp.buf.signature_help,  opts_with_desc('vim.lsp.buf.signature_help'))
+end
 
-  if client.server_capabilities.documentHighlightProvider then
-    local augroup_id = vim.api.nvim_create_augroup('DocumentHighlightGroup', { clear = false })
-    vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
-
-    vim.api.nvim_create_autocmd(
-      { 'CursorHold' },
-      {
-        group = augroup_id,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.clear_references()
-          vim.lsp.buf.document_highlight()
-        end
-      }
-    )
+local setup_document_highlights = function(client, bufnr)
+  if not client.server_capabilities.documentHighlightProvider then
+    return
   end
 
-  if client.server_capabilities.codeLensProvider then
-    local augroup_id = vim.api.nvim_create_augroup('CodeLensGroup', { clear = false })
-    vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
+  local augroup_id = vim.api.nvim_create_augroup('DocumentHighlightGroup', { clear = false })
+  vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
-    vim.api.nvim_create_autocmd(
-      { 'BufEnter' },
-      {
-        group = augroup_id,
-        buffer = bufnr,
-        once = true,
-        callback = vim.lsp.codelens.refresh,
-      }
-    )
+  vim.api.nvim_create_autocmd(
+  { 'CursorHold' },
+  {
+    group = augroup_id,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.clear_references()
+      vim.lsp.buf.document_highlight()
+    end
+  }
+  )
 
-    vim.api.nvim_create_autocmd(
-      { 'BufWritePost', 'CursorHold', 'InsertLeave' },
-      {
-        group = augroup_id,
-        buffer = bufnr,
-        callback = vim.lsp.codelens.refresh,
-      }
-    )
+  vim.api.nvim_create_autocmd(
+  { 'InsertEnter' },
+  {
+    group = augroup_id,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.clear_references()
+    end
+  }
+  )
+end
+
+local setup_codelens = function(client, bufnr)
+  if not client.server_capabilities.codeLensProvider then
+    return
   end
 
-  if client.server_capabilities.documentFormattingProvider then
-    local augroup_id = vim.api.nvim_create_augroup('DocumentFormattingGroup', { clear = false })
-    vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
+  local augroup_id = vim.api.nvim_create_augroup('CodeLensGroup', { clear = false })
+  vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
-    vim.api.nvim_create_autocmd(
-      { 'BufWritePre' },
-      {
-        group = augroup_id,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.formatting_sync(nil, 1000)
-        end,
+  vim.api.nvim_create_autocmd(
+  { 'BufEnter' },
+  {
+    group = augroup_id,
+    buffer = bufnr,
+    once = true,
+    callback = vim.lsp.codelens.refresh,
+  }
+  )
+  vim.api.nvim_create_autocmd(
+  { 'BufWritePost', 'CursorHold', 'InsertLeave' },
+  {
+    group = augroup_id,
+    buffer = bufnr,
+    callback = vim.lsp.codelens.refresh,
+  }
+  )
+end
+
+local setup_format_on_save = function(client, bufnr)
+  if not client.server_capabilities.documentFormattingProvider then
+    return
+  end
+
+  print(vim.inspect(client.server_capabilities))
+
+  local augroup_id = vim.api.nvim_create_augroup('DocumentFormattingGroup', { clear = false })
+  vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
+
+  vim.api.nvim_create_autocmd(
+  { 'BufWritePre' },
+  {
+    group = augroup_id,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format{
+        bufnr = bufnr,
       }
-    )
+    end,
+  }
+  )
+end
+
+local custom_lsp_attach = function(setup_callbacks)
+  return function(client, bufnr)
+    for _, setup_function in ipairs(setup_callbacks) do
+      setup_function(client, bufnr)
+    end
   end
 end
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- Delay update agnostics.
-    update_in_insert = false,
-  }
-)
-
-base_server_settings = {
-  on_attach = base_custom_lsp_attach,
-  flags = {
-    -- TODO: Remove later, this will be the default in Neovim 0.7+.
-    debounce_text_changes = 150,
-  }
+local base_server_settings = {
+  on_attach = custom_lsp_attach({ -- by default, set up everything!
+    setup_keymaps,
+    setup_document_highlights,
+    setup_codelens,
+    setup_format_on_save,
+  })
 }
 
-local angularls_path = '/usr/local/lib/node_modules/@angular/language-server'
-local angularls_cmd = { 'ngserver', '--stdio', '--tsProbeLocations', angularls_path, '--ngProbeLocations', angularls_path }
+local configs = {
+  -- TODO: Populate servers.
+  pyright = {},
 
-local servers = {
-  angularls = {
-    filetypes = { 'html', 'typescript' },
-    cmd = angularls_cmd,
-    on_new_config = function(new_config, new_root_dir)
-      new_config.cmd = angularls_cmd
-    end,
-  },
-
-  pyright = {
-    filetypes = { 'python' },
-  },
-
-  tailwindcss = {
-    filetypes = { 'html' },
-  },
-
-  tsserver = {
-    filetypes = { 'javascript', 'typescript' },
-    init_options = {
-      preferences = {
-        disableSuggestions = true,
-      },
+  null_ls = {
+    sources = {
+      null_ls.builtins.formatting.blue,
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.diagnostics.vale,
     },
   },
 
-  gopls = {
-    filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-  },
 }
 
-for server, additional_server_settings in pairs(servers) do
-  local server_settings = vim.tbl_extend('force', base_server_settings, additional_server_settings)
+for server, server_specific_settings in pairs(configs) do
+  local server_settings = vim.tbl_extend('force', base_server_settings, server_specific_settings)
   lspconfig[server].setup(server_settings)
 end
