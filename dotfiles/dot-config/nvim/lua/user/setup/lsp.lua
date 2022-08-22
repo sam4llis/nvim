@@ -4,8 +4,19 @@ if vim.fn.has('nvim-0.7.0') ~= 1 then
 end
 
 local lspconfig = require('lspconfig')
-local null_ls = require('null-ls')
-lspconfig['null_ls'] = null_ls
+
+local has_null_ls, null_ls = pcall(require, 'null-ls')
+if has_null_ls then
+  lspconfig['null_ls'] = null_ls
+
+  null_ls_config = {
+    sources = {
+      null_ls.builtins.formatting.blue,
+      null_ls.builtins.formatting.prettier,
+      null_ls.builtins.diagnostics.vale,
+    },
+  }
+end
 
 local setup_keymaps = function(client, bufnr)
   local opts_with_desc = function(desc)
@@ -135,15 +146,7 @@ local base_server_settings = {
 local configs = {
   -- TODO: Populate servers.
   pyright = {},
-
-  null_ls = {
-    sources = {
-      null_ls.builtins.formatting.blue,
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.diagnostics.vale,
-    },
-  },
-
+  null_ls = null_ls_config,
 }
 
 for server, server_specific_settings in pairs(configs) do
