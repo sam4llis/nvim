@@ -23,6 +23,7 @@ require('user.setup.telescope')
 require('user.setup.gitsigns')
 require('user.setup.projectionist')
 require('user.setup.spellsitter')
+require('user.setup.dap')
 
 -- Load user interface.
 require('user.ui.colorscheme')

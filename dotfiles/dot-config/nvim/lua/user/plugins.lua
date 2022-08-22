@@ -59,6 +59,11 @@ vim.call('plug#begin', '~/.config/nvim/plugged')
     Plug('jose-elias-alvarez/null-ls.nvim')
   end
 
+  -- Debugging.
+  Plug('mfussenegger/nvim-dap')
+  Plug('mfussenegger/nvim-dap-python')
+  Plug('rcarriga/nvim-dap-ui')
+
   -- Miscellaneous.
   Plug('kyazdani42/nvim-web-devicons')
   Plug('lewis6991/gitsigns.nvim')
