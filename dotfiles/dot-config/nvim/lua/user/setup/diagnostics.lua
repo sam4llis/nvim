@@ -8,7 +8,7 @@ vim.keymap.set(
   'n',
   'ycQ',
   function()
-    vim.diagnostic.setqflist({severity={min=vim.diagnostic.severity.ERROR}})
+    vim.diagnostic.setqflist({ severity = { min = vim.diagnostic.severity.ERROR } })
   end
 )
 
@@ -19,7 +19,7 @@ vim.keymap.set(
   'n',
   '[G',
   function()
-    vim.diagnostic.goto_prev({severity={min=vim.diagnostic.severity.ERROR}})
+    vim.diagnostic.goto_prev({ severity = { min = vim.diagnostic.severity.ERROR } })
   end
 )
 
@@ -27,6 +27,6 @@ vim.keymap.set(
   'n',
   ']G',
   function()
-    vim.diagnostic.goto_next({severity={min=vim.diagnostic.severity.ERROR}})
+    vim.diagnostic.goto_next({ severity = { min = vim.diagnostic.severity.ERROR } })
   end
 )

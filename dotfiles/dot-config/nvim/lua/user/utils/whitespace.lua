@@ -4,7 +4,7 @@ end
 
 vim.api.nvim_create_user_command(
   'TrimWhitespace',
-  function ()
+  function()
     local view = vim.fn.winsaveview()
     vim.cmd([[keeppatterns %s/\s\+$//e]])
     vim.fn.winrestview(view)

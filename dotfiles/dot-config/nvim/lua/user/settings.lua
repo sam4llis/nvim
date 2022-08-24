@@ -6,36 +6,36 @@
 --                            |___/
 
 local settings = {
-  cursorcolumn = false,                      -- Highlight the active cursor column.
-  cursorline = true,                         -- Highlight the active cursor line.
+  cursorcolumn = false, -- Highlight the active cursor column.
+  cursorline = true, -- Highlight the active cursor line.
   completeopt = 'menuone,noinsert,noselect', -- Saner completion experience.
   diffopt = 'internal,context:100,filler,foldcolumn:0,algorithm:patience,vertical',
-  foldcolumn = 'auto',                       -- Resize to the minimum amount of folds to display.
-  history = 5000,                            -- Remember more command-line history.
-  hlsearch = false,                          -- Disable search highlighting by default.
-  ignorecase = true,                         -- Case-insensitive search.
-  lazyredraw = true,                         -- Do not redraw screen while executing macros, etc.
-  list = true,                               -- Enable list mode.
+  foldcolumn = 'auto', -- Resize to the minimum amount of folds to display.
+  history = 5000, -- Remember more command-line history.
+  hlsearch = false, -- Disable search highlighting by default.
+  ignorecase = true, -- Case-insensitive search.
+  lazyredraw = true, -- Do not redraw screen while executing macros, etc.
+  list = true, -- Enable list mode.
   listchars = 'tab:>-,trail:x,extends:>,precedes:<,nbsp:+,leadmultispace:.',
-  mouse = 'a',                               -- Enable mouse in most contexts.
-  number = true,                             -- Line numbering.
-  path = '**',                               -- Recursively find files.
-  relativenumber = true,                     -- Show line numbers relative to the active line.
-  shiftround = true,                         -- Round indent to multiples of 'shiftwidth'.
-  shiftwidth = 4,                            -- Default auto-indent space.
-  showmode = false,                          -- Do not show modes in the command line.
-  scrolloff = 2,                             -- Number of screen lines to keep above and below the cursor.
-  sidescrolloff = 5,                         -- The minimum number of screen lines left/right of the cursor.
-  signcolumn = 'auto',                       -- Automatically toggle the sign column when needed.
-  smartcase = true,                          -- Enable smart case sensitivity.
-  spelllang = 'en_gb',                       -- British English for spell checking.
-  splitbelow = true,                         -- Sane split behaviour.
-  splitright = true,                         -- Sane split behaviour.
-  tabstop = 4,                               -- Insert 4 spaces in place of a tab.
-  termguicolors = true,                      -- Enable 24-bit RGB colour.
-  updatetime = 50,                           -- Default swap file backup time.
-  winblend = 20,                             -- Default transparency for floating windows.
-  wrap = false,                              -- Do not word wrap.
+  mouse = 'a', -- Enable mouse in most contexts.
+  number = true, -- Line numbering.
+  path = '**', -- Recursively find files.
+  relativenumber = true, -- Show line numbers relative to the active line.
+  shiftround = true, -- Round indent to multiples of 'shiftwidth'.
+  shiftwidth = 4, -- Default auto-indent space.
+  showmode = false, -- Do not show modes in the command line.
+  scrolloff = 2, -- Number of screen lines to keep above and below the cursor.
+  sidescrolloff = 5, -- The minimum number of screen lines left/right of the cursor.
+  signcolumn = 'auto', -- Automatically toggle the sign column when needed.
+  smartcase = true, -- Enable smart case sensitivity.
+  spelllang = 'en_gb', -- British English for spell checking.
+  splitbelow = true, -- Sane split behaviour.
+  splitright = true, -- Sane split behaviour.
+  tabstop = 4, -- Insert 4 spaces in place of a tab.
+  termguicolors = true, -- Enable 24-bit RGB colour.
+  updatetime = 50, -- Default swap file backup time.
+  winblend = 20, -- Default transparency for floating windows.
+  wrap = false, -- Do not word wrap.
 }
 
 for k, v in pairs(settings) do

@@ -149,9 +149,9 @@ local configs = {
   --       setup.keymaps,
   --       setup.document_highlights,
   --       setup.codelens,
-  --     })
+  --     }),
   --   },
-  -- Finally, to call null-ls servers:
+  -- Finally, to set up null-ls servers:
   --   null_ls = null_ls_config,
   --
 }

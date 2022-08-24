@@ -6,7 +6,7 @@ end
 local actions = require('telescope.actions')
 local actions_state = require('telescope.actions.state')
 
-require('telescope').setup{
+require('telescope').setup({
   defaults = {
     mappings = {
       i = {
@@ -48,7 +48,7 @@ require('telescope').setup{
       case_mode = 'smart_case',
     },
   },
-}
+})
 
 -- require('telescope').load_extension('fzf')
 require('telescope').load_extension('arglist')

@@ -6,4 +6,4 @@ if not installed then
   return
 end
 
-require('spellsitter').setup()
+spellsitter.setup()
