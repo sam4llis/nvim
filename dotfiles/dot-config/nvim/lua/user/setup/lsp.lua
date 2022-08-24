@@ -19,6 +19,11 @@ if has_null_ls then
   }
 end
 
+setup.options = function(client, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
+end
+
 setup.keymaps = function(client, bufnr)
   local opts_with_desc = function(desc)
     return {
