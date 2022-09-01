@@ -34,7 +34,7 @@ local settings = {
   tabstop = 4, -- Insert 4 spaces in place of a tab.
   termguicolors = true, -- Enable 24-bit RGB colour.
   updatetime = 50, -- Default swap file backup time.
-  winblend = 20, -- Default transparency for floating windows.
+  winblend = 0, -- Default transparency for floating windows.
   wrap = false, -- Do not word wrap.
 }
 
