@@ -16,14 +16,14 @@ require('user.utils.whitespace')
 require('user.utils.autocmds')
 
 -- Setup plugins.
-require('user.setup.treesitter')
-require('user.setup.lsp')
+require('user.setup.dap')
 require('user.setup.diagnostics')
-require('user.setup.telescope')
 require('user.setup.gitsigns')
+require('user.setup.lsp')
 require('user.setup.projectionist')
 require('user.setup.spellsitter')
-require('user.setup.dap')
+require('user.setup.telescope')
+require('user.setup.treesitter')
 
 -- Load user interface.
 require('user.ui.colorscheme')
