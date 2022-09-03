@@ -52,6 +52,11 @@ if vim.fn.has('nvim-0.7.2') == 1 then
   Plug('jose-elias-alvarez/null-ls.nvim')
 end
 
+if vim.fn.has('nvim-0.7.0') == 1 then
+  Plug('hrsh7th/nvim-cmp')
+  Plug('hrsh7th/cmp-nvim-lsp')
+end
+
 -- Debugging.
 Plug('mfussenegger/nvim-dap')
 Plug('mfussenegger/nvim-dap-python')

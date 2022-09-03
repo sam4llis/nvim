@@ -16,6 +16,7 @@ require('user.utils.whitespace')
 require('user.utils.autocmds')
 
 -- Setup plugins.
+require('user.setup.cmp')
 require('user.setup.dap')
 require('user.setup.diagnostics')
 require('user.setup.gitsigns')
