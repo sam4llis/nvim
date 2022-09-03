@@ -113,8 +113,6 @@ setup.format_on_save = function(client, bufnr)
     return
   end
 
-  print(vim.inspect(client.server_capabilities))
-
   local augroup_id = vim.api.nvim_create_augroup('DocumentFormattingGroup', { clear = false })
   vim.api.nvim_clear_autocmds({ group = augroup_id, buffer = bufnr })
 
