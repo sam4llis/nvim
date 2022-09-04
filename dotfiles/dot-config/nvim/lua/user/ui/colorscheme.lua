@@ -16,6 +16,7 @@ if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/plugged/nvim-tundra')) =
       comments = { bold = true, italic = true },
       conditionals = {},
       constants = { bold = true },
+      fields = {},
       functions = {},
       keywords = {},
       loops = {},
