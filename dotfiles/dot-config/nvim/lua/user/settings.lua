@@ -10,6 +10,7 @@ local settings = {
   cursorline = true, -- Highlight the active cursor line.
   completeopt = 'menuone,noinsert,noselect', -- Saner completion experience.
   diffopt = 'internal,context:100,filler,foldcolumn:0,algorithm:patience,vertical',
+  fillchars = 'diff:╱', -- Character to fill deleted lines of the diff option.
   foldcolumn = 'auto', -- Resize to the minimum amount of folds to display.
   history = 5000, -- Remember more command-line history.
   hlsearch = false, -- Disable search highlighting by default.
