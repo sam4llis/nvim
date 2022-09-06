@@ -29,6 +29,7 @@ local settings = {
   sidescrolloff = 5, -- The minimum number of screen lines left/right of the cursor.
   signcolumn = 'auto', -- Automatically toggle the sign column when needed.
   smartcase = true, -- Enable smart case sensitivity.
+  spell = false, -- Disable spelling by default.
   spelllang = 'en_gb', -- British English for spell checking.
   splitbelow = true, -- Sane split behaviour.
   splitright = true, -- Sane split behaviour.

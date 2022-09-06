@@ -22,7 +22,6 @@ require('user.setup.diagnostics')
 require('user.setup.gitsigns')
 require('user.setup.lsp')
 require('user.setup.projectionist')
-require('user.setup.spellsitter')
 require('user.setup.telescope')
 require('user.setup.treesitter')
 

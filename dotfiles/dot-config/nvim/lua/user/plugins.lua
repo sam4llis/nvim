@@ -65,7 +65,6 @@ Plug('rcarriga/nvim-dap-ui')
 -- Miscellaneous.
 Plug('kyazdani42/nvim-web-devicons')
 Plug('lewis6991/gitsigns.nvim')
-Plug('lewis6991/spellsitter.nvim')
 
 -- My Plugins.
 if vim.fn.has('nvim-0.7.0') == 1 then
