@@ -40,6 +40,10 @@ if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/plugged/nvim-tundra')) =
       gitsigns = true,
       telescope = true,
     },
+    overwrite = {
+      colors = {},
+      highlights = {},
+    },
   })
 
   vim.opt.background = 'dark'
