@@ -6,19 +6,6 @@ end
 local lspconfig = require('lspconfig')
 local setup = {}
 
-local has_null_ls, null_ls = pcall(require, 'null-ls')
-if has_null_ls then
-  lspconfig['null_ls'] = null_ls
-
-  NULL_LS_CONFIG = {
-    sources = {
-      null_ls.builtins.formatting.blue,
-      null_ls.builtins.formatting.prettier,
-      null_ls.builtins.diagnostics.vale,
-    },
-  }
-end
-
 setup.options = function(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
   vim.api.nvim_buf_set_option(bufnr, 'tagfunc', 'v:lua.vim.lsp.tagfunc')
@@ -142,6 +129,11 @@ local base_server_settings = {
   on_attach = custom_lsp_attach(setup) -- By default, set up everything.
 }
 
+-- Setup for null-ls.
+local null_ls = require('null-ls')
+lspconfig['null_ls'] = null_ls
+
+
 local configs = {
   --
   -- TODO: Populate servers. To populate servers with base server settings:
@@ -155,7 +147,11 @@ local configs = {
   --     }),
   --   },
   -- Finally, to set up null-ls servers:
-  --   null_ls = null_ls_config,
+  --   null_ls = {
+  --     sources = {
+  --       ...
+  --     },
+  --  }
   --
 }
 
