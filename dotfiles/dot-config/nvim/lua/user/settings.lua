@@ -14,6 +14,7 @@ local settings = {
   history = 5000, -- Remember more command-line history.
   hlsearch = false, -- Disable search highlighting by default.
   ignorecase = true, -- Case-insensitive search.
+  laststatus = 3,
   lazyredraw = true, -- Do not redraw screen while executing macros, etc.
   list = true, -- Enable list mode.
   listchars = 'tab:>-,trail:x,extends:>,precedes:<,nbsp:+,leadmultispace:.',
@@ -41,13 +42,6 @@ local settings = {
 
 for k, v in pairs(settings) do
   vim.opt[k] = v
-end
-
-if vim.fn.has('nvim-0.7.0') == 1 then
-  vim.opt.laststatus = 3
-else
-  vim.opt.laststatus = 2
-  vim.api.nvim_err_writeln('Global statusline requires Neovim 0.7.0')
 end
 
 vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+' -- Hide dotfiles in netrw by default.
