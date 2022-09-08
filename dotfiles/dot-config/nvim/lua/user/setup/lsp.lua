@@ -135,24 +135,8 @@ lspconfig['null_ls'] = null_ls
 
 
 local configs = {
-  --
-  -- TODO: Populate servers. To populate servers with base server settings:
-  --   server_name = {},
-  -- Or, to populate using a custom LSP attach:
-  --   server_name = {
-  --     on_attach = custom_lsp_attach({
-  --       setup.keymaps,
-  --       setup.document_highlights,
-  --       setup.codelens,
-  --     }),
-  --   },
-  -- Finally, to set up null-ls servers:
-  --   null_ls = {
-  --     sources = {
-  --       ...
-  --     },
-  --  }
-  --
+  -- TODO: Populate servers.
+  -- See https://gist.github.com/sam4llis/b6b93a51dcbc5f81efcf4e5d41009661
 }
 
 for server, server_specific_settings in pairs(configs) do
