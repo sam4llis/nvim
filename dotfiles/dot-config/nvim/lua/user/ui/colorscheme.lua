@@ -37,6 +37,7 @@ if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/plugged/nvim-tundra')) =
       treesitter = true,
       cmp = true,
       context = true,
+      dbui = true,
       gitsigns = true,
       telescope = true,
     },
