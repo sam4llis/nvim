@@ -33,6 +33,7 @@ local settings = {
   spelllang = 'en_gb', -- British English for spell checking.
   splitbelow = true, -- Sane split behaviour.
   splitright = true, -- Sane split behaviour.
+  statusline = '%<%f %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%) %P',
   tabstop = 4, -- Insert 4 spaces in place of a tab.
   termguicolors = true, -- Enable 24-bit RGB colour.
   updatetime = 50, -- Default swap file backup time.
