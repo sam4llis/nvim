@@ -21,6 +21,7 @@ local settings = {
   mouse = 'a', -- Enable mouse in most contexts.
   number = true, -- Line numbering.
   path = '**', -- Recursively find files.
+  pumheight = 5, -- Maximum number of items to show in the popup menu.
   relativenumber = true, -- Show line numbers relative to the active line.
   shiftround = true, -- Round indent to multiples of 'shiftwidth'.
   shiftwidth = 4, -- Default auto-indent space.
