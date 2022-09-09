@@ -14,6 +14,14 @@ cmp.setup({
     completeopt = 'menu,menuone,noselect',
     keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
   },
+  enabled = function()
+    local context = require('cmp.config.context')
+    if vim.api.nvim_get_mode().mode == 'c' then
+      return true
+    else
+      return not context.in_treesitter_capture('comment') and not context.in_syntax_group('Comment')
+    end
+  end,
   formatting = {
     format = function(_, entry)
       entry.kind = (require('user.ui.icons.cmp')[entry.kind] or '') .. entry.kind
