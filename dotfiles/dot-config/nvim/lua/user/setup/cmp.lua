@@ -60,7 +60,12 @@ vim.api.nvim_create_autocmd('FileType', {
   group = augroup,
 })
 
+-- TODO: Populate servers.
+local servers = {}
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['jedi_language_server'].setup({
-  capabilities = capabilities,
-})
+for _, server in ipairs(servers) do
+  require('lspconfig')[server].setup({
+    capabilities = capabilities,
+  })
+end
