@@ -51,6 +51,15 @@ cmp.setup({
   },
 })
 
+local augroup = vim.api.nvim_create_augroup('DadbodCompletion', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'sql', 'mysql', 'plsql' },
+  callback = function()
+    cmp.setup.buffer({ sources = { { name = 'vim-dadbod-completion' } } })
+  end,
+  group = augroup,
+})
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 require('lspconfig')['jedi_language_server'].setup({
   capabilities = capabilities,
