@@ -8,7 +8,9 @@ if not cmp then return end
 
 cmp.setup({
   completion = {
-    autocomplete = false,
+    autocomplete = {
+      require('cmp.types').cmp.TriggerEvent.TextChanged,
+    },
     completeopt = 'menu,menuone,noselect',
     keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
   },
