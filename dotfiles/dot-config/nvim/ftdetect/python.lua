@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd(
     group = augroup_id,
     pattern = { '*.py' },
     callback = function()
-      vim.cmd('silent 0r ' .. vim.fn.expand('$HOME/.config/nvim/template/skeleton.py'))
+      vim.cmd('silent 0r ' .. vim.fn.stdpath('config') .. '/template/skeleton.py')
     end,
   }
 )
