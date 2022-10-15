@@ -4,8 +4,6 @@ end
 
 vim.api.nvim_create_user_command('Vimrc',
   function(opts)
-    vim.cmd('lcd ' .. vim.fn.stdpath('config'))
-
     if opts.args == '' then
       vim.cmd('edit $MYVIMRC')
     else
@@ -17,9 +15,10 @@ vim.api.nvim_create_user_command('Vimrc',
         vim.api.nvim_err_writeln(string.format('[Vimrc]: File %s.lua not found.', opts.args))
         return
       end
-
       vim.cmd('edit ' .. path)
     end
+
+    vim.cmd('lcd ' .. vim.fn.stdpath('config'))
   end,
   {
     nargs = '?',
