@@ -117,6 +117,11 @@ setup.format_on_save = function(client, bufnr)
   )
 end
 
+setup.format_modifications_on_save = function(client, bufnr)
+  local lsp_format_modifications = require('lsp-format-modifications')
+  lsp_format_modifications.attach(client, bufnr, { format_on_save = true })
+end
+
 local custom_lsp_attach = function(setup_callbacks)
   return function(client, bufnr)
     for _, setup_function in pairs(setup_callbacks) do
@@ -126,13 +131,18 @@ local custom_lsp_attach = function(setup_callbacks)
 end
 
 local base_server_settings = {
-  on_attach = custom_lsp_attach(setup) -- By default, set up everything.
+  on_attach = custom_lsp_attach({
+    setup.codelens,
+    setup.document_highlights,
+    setup.format_on_save,
+    setup.keymaps,
+    setup.options,
+  }) -- By default, set up everything.
 }
 
 -- Setup for null-ls.
 local null_ls = require('null-ls')
 lspconfig['null_ls'] = null_ls
-
 
 local configs = {
   -- TODO: Populate servers.

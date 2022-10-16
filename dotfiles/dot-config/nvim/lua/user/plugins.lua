@@ -51,6 +51,7 @@ end
 -- LSP.
 if vim.fn.has('nvim-0.7.2') == 1 then
   Plug('neovim/nvim-lspconfig')
+  Plug('joechrisellis/lsp-format-modifications.nvim')
   Plug('jose-elias-alvarez/null-ls.nvim')
 end
 
