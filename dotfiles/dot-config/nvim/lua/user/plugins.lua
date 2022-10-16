@@ -5,12 +5,18 @@
 --  | .__/|_|\__,_|\__, |_|_| |_|___(_)_|\__,_|\__,_|
 --  |_|            |___/
 
-if vim.fn.empty(vim.fn.glob('~/.config/nvim/autoload/plug.vim')) == 1 then
-  vim.cmd("!sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+local os = vim.loop.os_uname().sysname
+if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('config') .. '/autoload/plug.vim')) == 1 then
+  if os == 'Darwin' then
+    vim.cmd("!sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+  elseif os == 'Windows_NT' then
+    vim.cmd('silent !md ' .. vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'))
+    vim.cmd('silent !powershell.exe Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile ' .. vim.fn.expand(vim.fn.stdpath('config') .. '/autoload/plug.vim'))
+  end
 end
 
 local Plug = vim.fn['plug#']
-vim.call('plug#begin', '~/.config/nvim/plugged')
+vim.call('plug#begin')
 
 -- Vim.
 Plug('joechrisellis/gruvbox')
