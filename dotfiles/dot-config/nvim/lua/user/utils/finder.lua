@@ -5,7 +5,12 @@ end
 vim.api.nvim_create_user_command(
   'Finder',
   function()
-    vim.cmd('silent !open %:p:h')
+    local os = vim.loop.os_uname().sysname
+    if os == 'Darwin' then
+      vim.cmd('silent !open %:p:h')
+    elseif os == 'Windows_NT' then
+      vim.cmd('silent !explorer %:p:h')
+    end
   end,
   {}
 )
