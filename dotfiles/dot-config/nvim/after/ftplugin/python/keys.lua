@@ -5,8 +5,11 @@ vim.api.nvim_buf_create_user_command(
   0,
   'Run',
   function()
-    vim.cmd[[80vsplit +terminal\ python3\ %]]
+    vim.cmd('noautocmd write')
+    vim.cmd [[20split +terminal\ python3\ %]]
     -- vim.cmd('startinsert')
   end,
   {}
 )
+
+vim.keymap.set('n', '<leader>r', ':Run<CR>', { silent = true })
