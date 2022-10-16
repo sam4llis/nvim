@@ -122,6 +122,32 @@ setup.format_modifications_on_save = function(client, bufnr)
   lsp_format_modifications.attach(client, bufnr, { format_on_save = true })
 end
 
+-- Returns an LSP setup callback that will filter diagnostics from the given
+-- client to only those matching the predicate. Useful if you want to do
+-- something like only show error diagnostics for a given LSP client.
+local filter_diagnostics = function(predicate)
+  return function(client, bufnr)
+    local client_diagnostics_ns_id = vim.lsp.diagnostic.get_namespace(client.id)
+
+    local orig_vim_diagnostic_set = vim.diagnostic.set
+    vim.diagnostic.set = function(ns_id, bufnr, diagnostics, opts)
+      if ns_id ~= client_diagnostics_ns_id then
+        return orig_vim_diagnostic_set(ns_id, bufnr, diagnostics, opts)
+      end
+
+      local filtered_diagnostics = {}
+      for _, diagnostic in ipairs(diagnostics) do
+        print(vim.inspect(predicate))
+        if predicate(diagnostic) then
+          filtered_diagnostics[#filtered_diagnostics + 1] = diagnostic
+        end
+      end
+
+      return orig_vim_diagnostic_set(ns_id, bufnr, filtered_diagnostics, opts)
+    end
+  end
+end
+
 local custom_lsp_attach = function(setup_callbacks)
   return function(client, bufnr)
     for _, setup_function in pairs(setup_callbacks) do
