@@ -46,4 +46,8 @@ for k, v in pairs(settings) do
   vim.opt[k] = v
 end
 
+if vim.fn.has('nvim-0.9.0') == 1 then
+  vim.opt['splitkeep'] = 'screen' -- Keep text on the same screen line on horizontal split.
+end
+
 vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+' -- Hide dotfiles in netrw by default.
