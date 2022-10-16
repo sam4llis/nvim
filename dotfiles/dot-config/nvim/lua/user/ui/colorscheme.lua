@@ -7,6 +7,10 @@
 if vim.fn.isdirectory(vim.fn.expand('$HOME/.config/nvim/plugged/nvim-tundra')) == 1 and vim.fn.has('nvim-0.7.0') == 1 then
   require('nvim-tundra').setup({
     transparent_background = false,
+    dim_inactive_windows = {
+      enabled = false,
+      color = nil,
+    },
     editor = {
       search = {},
       substitute = {},
