@@ -137,7 +137,6 @@ local filter_diagnostics = function(predicate)
 
       local filtered_diagnostics = {}
       for _, diagnostic in ipairs(diagnostics) do
-        print(vim.inspect(predicate))
         if predicate(diagnostic) then
           filtered_diagnostics[#filtered_diagnostics + 1] = diagnostic
         end
