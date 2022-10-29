@@ -25,7 +25,13 @@ vim.keymap.set('v', '<leader>S', ':sort!<CR>', { silent = true })
 vim.keymap.set('v', '<leader>c', ':%!column -t<CR>', { silent = true })
 
 -- Telescope mappings.
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { silent = true })
+vim.keymap.set('n', '<leader>ff', function()
+  local status = pcall(vim.cmd, 'Telescope git_files')
+  if not status then
+    vim.cmd('Telescope find_files')
+  end
+end, { silent = true })
+
 vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>', { silent = true })
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', { silent = true })
 vim.keymap.set('n', '<leader>fr', ':Telescope resume<CR>', { silent = true })
