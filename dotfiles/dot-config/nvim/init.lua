@@ -28,3 +28,4 @@ require('user.setup.treesitter')
 
 -- Load user interface.
 require('user.ui.colorscheme')
+require('user.ui.statusline')
