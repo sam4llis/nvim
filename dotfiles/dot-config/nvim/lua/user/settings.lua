@@ -47,6 +47,7 @@ end
 
 if not (vim.version().minor < 9) then
   vim.opt.splitkeep = 'screen' -- Keep text on the same screen line on horizontal split.
+  vim.opt.diffopt:append('linematch:60')
 end
 
 vim.g.netrw_list_hide = '\\(^\\|\\s\\s\\)\\zs\\.\\S\\+' -- Hide dotfiles in netrw by default.
