@@ -1,4 +1,5 @@
-if vim.fn.has('nvim-0.7.0') ~= 1 then
+if vim.version().minor < 7 then
+  vim.notify_once('[whitespace.lua] Neovim 0.7 or higher is required.', vim.log.levels.WARNING)
   return
 end
 

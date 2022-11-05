@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.5.0') ~= 1 then
-  vim.api.nvim_err_writeln("The plugin `gitsigns` requires Neovim 0.5.0.")
+if vim.version().minor < 7 then
+  vim.notify_once('[gitsigns.lua] Neovim 0.7 or higher is required.', vim.log.levels.WARNING)
   return
 end
 

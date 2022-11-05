@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.6.1') ~= 1 then
-  vim.api.nvim_err_writeln('The plugin `nvim-dap` requires Neovim 0.6.1.')
+if vim.version().minor < 8 then
+  vim.notify_once('[dap/init.lua] Neovim 0.8 or higher is required.', vim.log.levels.WARNING)
   return
 end
 

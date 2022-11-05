@@ -40,7 +40,7 @@ Plug('tpope/vim-unimpaired')
 Plug('tpope/vim-vinegar')
 
 -- Treesitter.
-if vim.fn.has('nvim-0.7.0') == 1 then
+if not (vim.version().minor < 8) then
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
   Plug('nvim-treesitter/nvim-treesitter-context')
   Plug('nvim-treesitter/nvim-treesitter-textobjects')
@@ -48,20 +48,20 @@ if vim.fn.has('nvim-0.7.0') == 1 then
 end
 
 -- Telescope.
-if vim.fn.has('nvim-0.7.0') == 1 then
+if not (vim.version().minor < 7) then
   Plug('nvim-lua/plenary.nvim')
   Plug('nvim-telescope/telescope.nvim')
   -- Plug('nvim-telescope/telescope-fzf-native.nvim', { ['do'] = 'make' })
 end
 
 -- LSP.
-if vim.fn.has('nvim-0.7.2') == 1 then
+if not (vim.version().minor < 7) then
   Plug('neovim/nvim-lspconfig')
   Plug('joechrisellis/lsp-format-modifications.nvim')
   Plug('jose-elias-alvarez/null-ls.nvim')
 end
 
-if vim.fn.has('nvim-0.7.0') == 1 then
+if (not vim.version().minor < 7) then
   Plug('hrsh7th/nvim-cmp')
   Plug('hrsh7th/cmp-nvim-lsp')
 end
@@ -76,7 +76,7 @@ Plug('kyazdani42/nvim-web-devicons')
 Plug('lewis6991/gitsigns.nvim')
 
 -- My Plugins.
-if vim.fn.has('nvim-0.7.0') == 1 then
+if (not vim.version().minor < 7) then
   Plug('sam4llis/nvim-cobalt')
   Plug('sam4llis/nvim-lua-gf')
   Plug('sam4llis/nvim-tundra')

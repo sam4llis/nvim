@@ -1,5 +1,5 @@
-if vim.fn.has('nvim-0.7.0') ~= 1 then
-  vim.api.nvim_err_writeln("The plugin `nvim-lspconfig (diagnostics)` requires Neovim 0.7.0.")
+if vim.version().minor < 7 then
+  vim.notify_once('[diagnostics.lua] Neovim 0.7 or higher is required.', vim.log.levels.WARNING)
   return
 end
 

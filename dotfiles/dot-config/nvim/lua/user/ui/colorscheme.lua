@@ -4,7 +4,7 @@
 --  | (_| (_) | | (_) | |  \__ \ (__| | | |  __/ | | | | |  __/_| | |_| | (_| |
 --   \___\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___(_)_|\__,_|\__,_|
 
-if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tundra')) == 1 and vim.fn.has('nvim-0.7.0') == 1 then
+if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tundra')) == 1 and not (vim.version().minor < 8) then
   require('nvim-tundra').setup({
     transparent_background = false,
     dim_inactive_windows = {
