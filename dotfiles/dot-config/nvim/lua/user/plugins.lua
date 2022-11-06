@@ -61,7 +61,7 @@ if not (vim.version().minor < 7) then
   Plug('jose-elias-alvarez/null-ls.nvim')
 end
 
-if (not vim.version().minor < 7) then
+if not (vim.version().minor < 7) then
   Plug('hrsh7th/nvim-cmp')
   Plug('hrsh7th/cmp-nvim-lsp')
 end
@@ -76,7 +76,7 @@ Plug('kyazdani42/nvim-web-devicons')
 Plug('lewis6991/gitsigns.nvim')
 
 -- My Plugins.
-if (not vim.version().minor < 7) then
+if not (vim.version().minor < 7) then
   Plug('sam4llis/nvim-cobalt')
   Plug('sam4llis/nvim-lua-gf')
   Plug('sam4llis/nvim-tundra')
