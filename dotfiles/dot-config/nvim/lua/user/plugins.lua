@@ -79,7 +79,7 @@ Plug('lewis6991/gitsigns.nvim')
 if not (vim.version().minor < 7) then
   Plug('sam4llis/nvim-cobalt')
   Plug('sam4llis/nvim-lua-gf')
-  Plug('sam4llis/nvim-tundra')
+  Plug('sam4llis/nvim-tundra', { ['branch'] = 'dev' })
   Plug('sam4llis/telescope-arglist.nvim')
 end
 
