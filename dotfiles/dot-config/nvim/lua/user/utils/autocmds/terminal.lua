@@ -9,9 +9,6 @@ vim.api.nvim_create_autocmd(
       -- Remove line numbers.
       vim.opt_local.number = false
       vim.opt_local.relativenumber = false
-
-      -- By default, start the terminal window in `Insert` mode.
-      vim.cmd('startinsert')
     end,
   }
 )
