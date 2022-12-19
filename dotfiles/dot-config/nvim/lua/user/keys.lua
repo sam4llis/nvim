@@ -26,10 +26,10 @@ vim.keymap.set('v', '<leader>c', ':%!column -t<CR>', { silent = true })
 
 -- Telescope mappings.
 vim.keymap.set('n', '<leader>ff', function()
-  local status = pcall(vim.cmd, 'Telescope git_files')
-  if not status then
-    vim.cmd('Telescope find_files')
+  if vim.loop.os_uname().sysname == 'Windows_NT' then
+    pcall(vim.cmd, 'Telescope git_files')
   end
+  vim.cmd('Telescope find_files')
 end, { silent = true })
 
 vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>', { silent = true })
