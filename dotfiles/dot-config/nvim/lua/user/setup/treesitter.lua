@@ -80,3 +80,8 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
+
+-- Override fold queries.
+vim.treesitter.set_query("python", "folds", [[
+  (expression_statement) @fold
+]])
