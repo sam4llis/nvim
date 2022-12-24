@@ -47,7 +47,9 @@ if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tun
     },
     overwrite = {
       colors = {},
-      highlights = {},
+      highlights = {
+        Folded = { fg = ss.syntax.string, bg = ss.bg.normal },
+      },
     },
   })
 
