@@ -3,7 +3,7 @@ if vim.version().minor < 8 then
   return
 end
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
   ensure_installed = {},
   highlight = {
     enable = true,
@@ -11,7 +11,7 @@ require('nvim-treesitter.configs').setup {
     },
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   incremental_selection = {
     enable = true,
@@ -31,7 +31,7 @@ require('nvim-treesitter.configs').setup {
       enable = true,
       swap_next = {
         [']vv'] = '@parameter.inner',
-        [']vf'] = '@funtion.outer',
+        [']vf'] = '@function.outer',
         [']vc'] = '@class.outer',
       },
       swap_previous = {
@@ -79,7 +79,7 @@ require('nvim-treesitter.configs').setup {
       show_help = '?',
     },
   },
-}
+})
 
 -- Override fold queries.
 vim.treesitter.set_query("python", "folds", [[
