@@ -5,6 +5,8 @@
 --   \___\___/|_|\___/|_|  |___/\___|_| |_|\___|_| |_| |_|\___(_)_|\__,_|\__,_|
 
 if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tundra')) == 1 and not (vim.version().minor < 8) then
+  local ss = require('nvim-tundra.stylesheet.arctic')
+
   require('nvim-tundra').setup({
     transparent_background = false,
     dim_inactive_windows = {
@@ -39,11 +41,13 @@ if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tun
     plugins = {
       lsp = true,
       treesitter = true,
+      telescope = true,
+      nvimtree = true,
       cmp = true,
       context = true,
       dbui = true,
       gitsigns = true,
-      telescope = true,
+      neogit = false,
     },
     overwrite = {
       colors = {},
