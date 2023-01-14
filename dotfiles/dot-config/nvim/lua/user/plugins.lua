@@ -8,10 +8,32 @@
 local os = vim.loop.os_uname().sysname
 if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('config') .. '/autoload/plug.vim')) == 1 then
   if os == 'Darwin' then
-    vim.cmd("!sh -c 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'")
+    vim.fn.system({
+      'sh',
+      '-c',
+      [['curl]],
+      '-fLo',
+      '~/.config/nvim/autoload/plug.vim]]',
+      vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'),
+      '--create-dirs',
+      [[https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']],
+    })
   elseif os == 'Windows_NT' then
-    vim.cmd('silent !md ' .. vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'))
-    vim.cmd('silent !powershell.exe Invoke-WebRequest -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile ' .. vim.fn.expand(vim.fn.stdpath('config') .. '/autoload/plug.vim'))
+    vim.fn.system({
+      'New-Item',
+      '-ItemType',
+      '"directory"',
+      '-Path',
+      vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'),
+    })
+    vim.fn.system({
+      'powershell.exe',
+      'Invoke-WebRequest',
+      '-useb',
+      'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+      '-OutFile',
+      vim.fn.expand(vim.fn.stdpath('config')) .. '/autoload/plug.vim',
+    })
   end
 end
 
