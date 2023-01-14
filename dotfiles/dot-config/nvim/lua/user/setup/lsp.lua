@@ -149,6 +149,8 @@ end
 
 local custom_lsp_attach = function(setup_callbacks)
   return function(client, bufnr)
+    -- Disable semantic tokens for now.
+    client.server_capabilities.semanticTokensProvider = nil
     for _, setup_function in pairs(setup_callbacks) do
       setup_function(client, bufnr)
     end
