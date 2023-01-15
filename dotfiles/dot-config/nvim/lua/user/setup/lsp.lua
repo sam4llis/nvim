@@ -150,7 +150,9 @@ end
 local custom_lsp_attach = function(setup_callbacks)
   return function(client, bufnr)
     -- Disable semantic tokens for now.
-    client.server_capabilities.semanticTokensProvider = nil
+    if vim.tbl_get(client.server_capabilities, 'semanticTokensProvider') then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
     for _, setup_function in pairs(setup_callbacks) do
       setup_function(client, bufnr)
     end
