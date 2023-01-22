@@ -13,6 +13,10 @@ if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tun
       enabled = false,
       color = nil,
     },
+    sidebars = {
+      enabled = true,
+      color = nil,
+    },
     editor = {
       search = {},
       substitute = {},
