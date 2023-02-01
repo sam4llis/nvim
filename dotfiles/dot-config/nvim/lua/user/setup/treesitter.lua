@@ -85,3 +85,5 @@ require('nvim-treesitter.configs').setup({
 vim.treesitter.set_query("python", "folds", [[
   (expression_statement) @fold
 ]])
+
+require('nvim-treesitter.parsers').filetype_to_parsername.xml = 'html'
