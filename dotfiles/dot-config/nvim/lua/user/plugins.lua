@@ -93,6 +93,10 @@ Plug('mfussenegger/nvim-dap')
 Plug('mfussenegger/nvim-dap-python')
 Plug('rcarriga/nvim-dap-ui')
 
+-- Syntax highlighting.
+Plug('Glench/Vim-Jinja2-Syntax')
+Plug('oasys/vim-textfsm')
+
 -- Miscellaneous.
 Plug('kyazdani42/nvim-web-devicons')
 Plug('lewis6991/gitsigns.nvim')
