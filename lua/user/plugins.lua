@@ -96,9 +96,9 @@ Plug('lewis6991/gitsigns.nvim')
 
 -- My Plugins.
 if not (vim.version().minor < 7) then
-  Plug('~/Documents/nvim-plugins/nvim-cobalt')
-  Plug('~/Documents/nvim-plugins/nvim-tundra')
-  Plug('~/Documents/nvim-plugins/telescope-arglist.nvim')
+  Plug('sam4llis/nvim-cobalt')
+  Plug('sam4llis/nvim-tundra', { ['branch'] = 'dev' })
+  Plug('sam4llis/telescope-arglist.nvim')
 end
 
 vim.call('plug#end')

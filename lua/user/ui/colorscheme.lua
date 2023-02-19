@@ -52,7 +52,6 @@ if vim.fn.isdirectory(vim.fn.expand(vim.fn.stdpath('data') .. '/plugged/nvim-tun
       dbui = true,
       gitsigns = true,
       neogit = false,
-      textfsm = true,
     },
     overwrite = {
       colors = {},
