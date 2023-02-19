@@ -6,33 +6,26 @@
 --  |_|            |___/
 
 local os = vim.loop.os_uname().sysname
-if vim.fn.empty(vim.fn.glob(vim.fn.stdpath('config') .. '/autoload/plug.vim')) == 1 then
+local plugpath = vim.fn.stdpath('data') .. '/site/autoload/plug.vim'
+local plugfile = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if not vim.loop.fs_stat(plugpath) then
   if os == 'Darwin' then
-    vim.fn.system({
-      'sh',
-      '-c',
-      [['curl]],
-      '-fLo',
-      '~/.config/nvim/autoload/plug.vim]]',
-      vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'),
-      '--create-dirs',
-      [[https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim']],
-    })
+    vim.cmd('!curl -fLo ' .. plugpath .. ' --create-dirs ' .. plugfile)
   elseif os == 'Windows_NT' then
     vim.fn.system({
       'New-Item',
       '-ItemType',
       '"directory"',
       '-Path',
-      vim.fn.expand(vim.fn.stdpath('config') .. '/autoload'),
+      vim.fn.stdpath('data') .. '/site/autoload/',
     })
     vim.fn.system({
       'powershell.exe',
       'Invoke-WebRequest',
       '-useb',
-      'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim',
+      plugfile,
       '-OutFile',
-      vim.fn.expand(vim.fn.stdpath('config')) .. '/autoload/plug.vim',
+      plugpath,
     })
   end
 end
@@ -103,9 +96,9 @@ Plug('lewis6991/gitsigns.nvim')
 
 -- My Plugins.
 if not (vim.version().minor < 7) then
-  Plug('sam4llis/nvim-cobalt')
-  Plug('sam4llis/nvim-tundra', { ['branch'] = 'dev' })
-  Plug('sam4llis/telescope-arglist.nvim')
+  Plug('~/Documents/nvim-plugins/nvim-cobalt')
+  Plug('~/Documents/nvim-plugins/nvim-tundra')
+  Plug('~/Documents/nvim-plugins/telescope-arglist.nvim')
 end
 
 vim.call('plug#end')

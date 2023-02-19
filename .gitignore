@@ -1,0 +1,7 @@
+.DS_Store
+
+# Ignore Neovim `spell` directory.
+spell/
+
+# Ignore DBUI database names and passwords.
+lua/user/setup/dbui/dbs.lua

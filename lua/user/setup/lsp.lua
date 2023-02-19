@@ -174,8 +174,113 @@ local null_ls = require('null-ls')
 lspconfig['null_ls'] = null_ls
 
 local configs = {
-  -- TODO: Populate servers.
-  -- See https://gist.github.com/sam4llis/b6b93a51dcbc5f81efcf4e5d41009661
+  gopls = {},
+
+  tailwindcss = {},
+
+  tsserver = {
+    on_attach = custom_lsp_attach({
+      setup.format_modifications_on_save,
+    }),
+  },
+
+  angularls = {
+    cmd = {
+      'ngserver',
+      '--stdio',
+      '--tsProbeLocations',
+      '/usr/local/lib/node_modules/@angular/language-server',
+      '--ngProbeLocations',
+      '/usr/local/lib/node_modules/@angular/language-server',
+    },
+    on_new_config = function(new_config, new_root_dir)
+      new_config.cmd = {
+        'ngserver',
+        '--stdio',
+        '--tsProbeLocations',
+        '/usr/local/lib/node_modules/@angular/language-server',
+        '--ngProbeLocations',
+        '/usr/local/lib/node_modules/@angular/language-server',
+      }
+    end,
+  },
+
+  lua_ls = {
+    on_attach = custom_lsp_attach({
+      setup.codelens,
+      setup.document_highlights,
+      setup.format_modifications_on_save,
+      setup.keymaps,
+      setup.options,
+    }),
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          globals = { 'vim' },
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file('', true),
+        },
+      },
+    },
+  },
+
+  pyright = {
+    on_attach = custom_lsp_attach({
+      setup.codelens,
+      setup.document_highlights,
+      setup.keymaps,
+      filter_diagnostics(function(diagnostic)
+        return diagnostic.severity == vim.diagnostic.severity.ERROR
+      end),
+    }),
+  },
+
+  -- jedi_language_server = {
+  --   on_attach = custom_lsp_attach({
+  --     setup.options,
+  --   }),
+  -- },
+
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          flake8 = {
+            enabled = true,
+          },
+          pycodestyle = {
+            enabled = true,
+          },
+          pydocstyle = {
+            enabled = false,
+            convention = 'numpy'
+          },
+        },
+      },
+    },
+    on_attach = custom_lsp_attach({
+      setup.options,
+      filter_diagnostics(function(diagnostic)
+        return diagnostic.severity ~= vim.diagnostic.severity.ERROR
+      end)
+    }),
+  },
+
+  null_ls = {
+    sources = {
+      null_ls.builtins.formatting.black,
+      -- null_ls.builtins.formatting.prettier,
+      null_ls.builtins.diagnostics.vale,
+      null_ls.builtins.formatting.sql_formatter.with({
+        extra_filetypes = { 'mysql' },
+        extra_args = { '--config', vim.fn.expand('~/.sql-formatter') },
+      }),
+    },
+  },
 }
 
 for server, server_specific_settings in pairs(configs) do
