@@ -84,7 +84,7 @@ if not (vim.version().minor < 7) then
 end
 
 if not (vim.version().minor < 7) then
-  Plug('hrsh7th/nvim-cmp')
+  Plug('hrsh7th/nvim-cmp', { ['commit'] = '11a9579' })
   Plug('hrsh7th/cmp-nvim-lsp')
 end
 
