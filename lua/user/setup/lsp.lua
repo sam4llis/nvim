@@ -111,6 +111,7 @@ setup.format_on_save = function(client, bufnr)
       callback = function()
         vim.lsp.buf.format({
           bufnr = bufnr,
+          async = true,
         })
       end,
     }
